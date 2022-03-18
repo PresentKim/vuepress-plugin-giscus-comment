@@ -1,1 +1,11 @@
-.github
+.idea/
+node_modules/
+.github/
+
+.DS_Store
+yarn-error.log
+.gitignore
+
+tsconfig.json
+src/**.*.ts
+src/vue.d.ts
