@@ -7,5 +7,7 @@ yarn-error.log
 .gitignore
 
 tsconfig.json
-src/**/*.ts
 src/vue.d.ts
+
+src/**/*.ts
+!src/**/*.d.ts
