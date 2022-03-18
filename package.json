@@ -8,12 +8,11 @@
     "type": "git",
     "url": "https://github.com/PresentKim/vuepress-plugin-giscus-comment"
   },
-  "version": "1.0.3",
-  "main": "src/node/index.ts",
+  "version": "1.0.4",
+  "main": "src/node/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "vue-tsc --noEmit --rootDir src --declaration --outDir dist",
-    "build2": "tsc"
+    "build": "tsc"
   },
   "devDependencies": {
     "@babel/types": "^7.17.0",
