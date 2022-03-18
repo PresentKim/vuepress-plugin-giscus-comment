@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "es2020"],
-    "module": "ESNext",
-    "moduleResolution":"node",
+    "module": "node12",
     "rootDir": "./src",
     "sourceMap": true,
     "strict": true,

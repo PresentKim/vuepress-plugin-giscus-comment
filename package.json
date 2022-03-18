@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/PresentKim/vuepress-plugin-giscus-comment"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "src/node/index.js",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
     "@vuepress/client": "^2.0.0-beta.35",
     "@vuepress/core": "^2.0.0-beta.36",
     "@vuepress/plugin-register-components": "^2.0.0-beta.36",
-    "typescript": "^4.6.2",
+    "typescript": "^4.7.0-dev.20220317",
     "vue": "^3.2.31"
   }
 }

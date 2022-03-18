@@ -1,4 +1,6 @@
-var giscusCommentPlugin = function (options, app) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const giscusCommentPlugin = (options, app) => {
     return {
         name: 'vuepress-plugin-giscus-comment',
         define: {
@@ -6,5 +8,5 @@ var giscusCommentPlugin = function (options, app) {
         }
     };
 };
-export default giscusCommentPlugin;
+exports.default = giscusCommentPlugin;
 //# sourceMappingURL=index.js.map

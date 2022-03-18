@@ -1,4 +1,7 @@
-export var DEFAULT_GISCUS_ATTRIBUTES = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DEFAULT_GISCUS_ATTRIBUTES = void 0;
+exports.DEFAULT_GISCUS_ATTRIBUTES = {
     repo: '',
     repoId: '',
     category: '',
@@ -10,6 +13,6 @@ export var DEFAULT_GISCUS_ATTRIBUTES = {
     theme: 'light',
     lang: 'en',
     crossOrigin: '',
-    async: true
+    async: true,
 };
 //# sourceMappingURL=index.js.map
