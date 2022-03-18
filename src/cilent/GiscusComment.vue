@@ -2,12 +2,13 @@
   <div class="giscus"/>
 </template>
 <script lang="ts">
-import {DEFAULT_GISCUS_ATTRIBUTES, GiscusAttributes, GiscusCommentPluginOptions} from "../lib";
+import {DEFAULT_GISCUS_ATTRIBUTES, GiscusAttributes, GiscusCommentPluginOptions} from "../shared";
+import {defineComponent} from "vue";
 
 declare const __GISCUS_COMMENT_OPTIONS__: GiscusCommentPluginOptions;
 const options: GiscusAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
 
-export default {
+export default defineComponent({
   props: {
     reactionsEnabled: {type: Boolean, default: options.reactionsEnabled},
     theme: {type: String, default: options.theme},
@@ -44,5 +45,5 @@ export default {
   unmount() {
     document.head.removeChild(this.scriptElement);
   }
-}
+});
 </script>

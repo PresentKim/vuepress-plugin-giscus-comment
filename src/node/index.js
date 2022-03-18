@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 var giscusCommentPlugin = function (options, app) {
     return {
         name: 'vuepress-plugin-giscus-comment',
@@ -8,4 +6,5 @@ var giscusCommentPlugin = function (options, app) {
         }
     };
 };
-exports["default"] = giscusCommentPlugin;
+export default giscusCommentPlugin;
+//# sourceMappingURL=index.js.map

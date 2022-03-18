@@ -1,5 +1,5 @@
 import type {Plugin} from '@vuepress/core';
-import {GiscusCommentPluginOptions} from "./lib";
+import {GiscusCommentPluginOptions} from "../shared";
 
 const giscusCommentPlugin: Plugin<GiscusCommentPluginOptions> = (options, app) => {
     return {

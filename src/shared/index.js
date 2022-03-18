@@ -1,7 +1,4 @@
-"use strict";
-exports.__esModule = true;
-exports.DEFAULT_GISCUS_ATTRIBUTES = void 0;
-exports.DEFAULT_GISCUS_ATTRIBUTES = {
+export var DEFAULT_GISCUS_ATTRIBUTES = {
     repo: '',
     repoId: '',
     category: '',
@@ -15,3 +12,4 @@ exports.DEFAULT_GISCUS_ATTRIBUTES = {
     crossOrigin: '',
     async: true
 };
+//# sourceMappingURL=index.js.map
