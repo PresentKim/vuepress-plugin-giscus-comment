@@ -5,9 +5,5 @@ node_modules/
 .DS_Store
 yarn-error.log
 .gitignore
-
+.npmignore
 tsconfig.json
-src/vue.d.ts
-
-src/**/*.ts
-!src/**/*.d.ts

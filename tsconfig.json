@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "lib": ["dom", "es2020"],
-    "module": "node12",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ES2018",
     "rootDir": "./src",
+    "outDir": "./lib",
     "sourceMap": true,
     "strict": true,
-    "declaration": true
+    "declaration": true,
+    "strictNullChecks": true
   }
 }
