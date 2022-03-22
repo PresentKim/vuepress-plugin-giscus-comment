@@ -8,8 +8,9 @@
  *
  * @url https://giscus.app/
  */
+import {PluginOptions} from "@vuepress/core";
 
-interface RequiredOptions {
+interface RequiredOptions extends PluginOptions{
     /** @description The repository path that pass to giscus */
     repo: string;
 
@@ -17,7 +18,7 @@ interface RequiredOptions {
     repoId: string;
 }
 
-interface OptionalOptions {
+interface OptionalOptions  extends PluginOptions{
     /**
      * @description Whether to enable reactions for main post
      * @default true
@@ -61,7 +62,7 @@ interface OptionalOptions {
     lazyLoading: boolean;
 }
 
-interface CategoryOptions {
+interface CategoryOptions  extends PluginOptions{
     /** @description The discussion category name of repository that pass to giscus */
     category: string;
 
@@ -69,7 +70,7 @@ interface CategoryOptions {
     categoryId: string;
 }
 
-interface CommonMappingOptions extends CategoryOptions {
+interface CommonMappingOptions extends CategoryOptions , PluginOptions{
     /**
      * @description The mapping method between the embedding page and the embedded discussion
      * @default 'pathname'
@@ -80,7 +81,7 @@ interface CommonMappingOptions extends CategoryOptions {
     term?: undefined;
 }
 
-interface NumberMappingOptions extends CategoryOptions {
+interface NumberMappingOptions extends CategoryOptions, PluginOptions {
     /**
      * @description The mapping method between the embedding page and the embedded discussion
      * @default 'pathname'
@@ -91,7 +92,7 @@ interface NumberMappingOptions extends CategoryOptions {
     term: number;
 }
 
-interface SpecificMappingOptions {
+interface SpecificMappingOptions extends PluginOptions {
     /**
      * @description The mapping method between the embedding page and the embedded discussion
      * @default 'pathname'
