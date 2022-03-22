@@ -1,45 +1,109 @@
+/**
+ * All interfaces and types defined here are used for giscus script elements.
+ * It may change with Giscus updates.
+ *
+ * P.S.
+ * If the value of an attribute is complex to get,
+ * you can easily get it from Giscus main page
+ *
+ * @url https://giscus.app/
+ */
+
 interface RequiredOptions {
-    repo: string,
-    repoId: string,
-    category: string,
-    categoryId: string
+    /** @description The repository path that pass to giscus */
+    repo: string;
+
+    /** @description The repository id that pass to giscus */
+    repoId: string;
 }
 
 interface OptionalOptions {
-    reactionsEnabled: boolean,
-    emitMetadata: boolean,
-    theme: string,
-    inputPosition: 'top' | 'bottom' | 'left' | 'right',
-    lang: 'de' | 'en' | 'es' | 'fr' | 'gsw' | 'id' | 'it' | 'ja' | 'ko' | 'pl' | 'ro' | 'ru' | 'tr' | 'vi' | 'zh-CN' | 'zh-TW',
-    crossOrigin: '' | 'anonymous' | 'use-credentials',
-    async: boolean
+    /**
+     * @description Whether to enable reactions for main post
+     * @default true
+     */
+    reactionsEnabled: boolean;
+
+    /**
+     * @description Whether to enable emit discussion metadata
+     * @default false
+     */
+    emitMetadata: boolean;
+
+    /**
+     * @description The theme name or custom theme css path that apply to giscus
+     * @default 'light'
+     */
+    theme:
+        'light' | 'light_high_contrast' | 'light_protanopia' |
+        'dark' | 'dark_high_contrast' | 'dark_protanopia' | 'dark_dimmed' |
+        'transparent_dark' | 'preferred_color_scheme' |
+        `${string}.css` | `https://${string}`;
+
+    /**
+     * @description The location of comment box
+     * @default 'bottom'
+     */
+    inputPosition: 'top' | 'bottom';
+
+    /**
+     * @description The language name that apply to giscus
+     * @default 'en'
+     */
+    lang:
+        'de' | 'en' | 'es' | 'fr' | 'gsw' | 'id' | 'it' | 'ja' |
+        'ko' | 'pl' | 'ro' | 'ru' | 'tr' | 'vi' | 'zh-CN' | 'zh-TW';
 }
 
-type CommonMappingType = 'url' | 'title' | 'og:title' | 'pathname';
-type SpecificMappingType = 'specific';
-type numberMappingType = 'number';
-type MappingType = CommonMappingType | SpecificMappingType | numberMappingType;
+interface CategoryOptions {
+    /** @description The discussion category name of repository that pass to giscus */
+    category: string;
 
-interface BasePluginOptions extends RequiredOptions, Partial<OptionalOptions> {
+    /** @description The discussion category id of repository that pass to giscus */
+    categoryId: string;
 }
 
-interface CommonMappingPluginOption extends BasePluginOptions {
-    mapping?: CommonMappingType
+interface CommonMappingOptions extends CategoryOptions {
+    /**
+     * @description The mapping method between the embedding page and the embedded discussion
+     * @default 'pathname'
+     */
+    mapping: 'url' | 'title' | 'og:title' | 'pathname';
+
+    /** @description Not required by Common mapping method */
+    term?: undefined;
 }
 
-interface SpecificMappingPluginOption extends BasePluginOptions {
-    mapping: SpecificMappingType,
-    term: string
+interface NumberMappingOptions extends CategoryOptions {
+    /**
+     * @description The mapping method between the embedding page and the embedded discussion
+     * @default 'pathname'
+     */
+    mapping: 'number';
+
+    /** @description The number to be used for discussion searches */
+    term: number;
 }
 
-interface NumberMappingPluginOptions extends BasePluginOptions {
-    mapping: numberMappingType,
-    term: number
+interface SpecificMappingOptions {
+    /**
+     * @description The mapping method between the embedding page and the embedded discussion
+     * @default 'pathname'
+     */
+    mapping: 'specific';
+
+    /** @description The term to be used for discussion searches */
+    term: string;
 }
 
-export type GiscusCommentPluginOptions = SpecificMappingPluginOption | NumberMappingPluginOptions | CommonMappingPluginOption;
+export type GiscusCommentPluginOptions =
+    RequiredOptions
+    & Partial<OptionalOptions>
+    & (Partial<CommonMappingOptions> | NumberMappingOptions | SpecificMappingOptions);
 
-export interface GiscusAttributes extends RequiredOptions, OptionalOptions {
-    mapping: MappingType
-    term?: string | number
-}
+export type GiscusCommentScriptAttributes =
+    RequiredOptions
+    & OptionalOptions
+    & (CommonMappingOptions | NumberMappingOptions | SpecificMappingOptions);
+
+export type GiscusCommentPluginConfig = ['vuepress-plugin-giscus-comment', GiscusCommentPluginOptions];

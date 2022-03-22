@@ -2,11 +2,11 @@
   <div class="giscus"/>
 </template>
 <script lang="ts">
-import {GiscusAttributes, GiscusCommentPluginOptions} from "../shared";
-import {defineComponent} from "vue";
+import {GiscusCommentPluginOptions, GiscusCommentScriptAttributes} from '../shared';
+import {defineComponent} from 'vue';
 
 declare const __GISCUS_COMMENT_OPTIONS__: GiscusCommentPluginOptions;
-const DEFAULT_GISCUS_ATTRIBUTES: GiscusAttributes = {
+const DEFAULT_GISCUS_ATTRIBUTES: GiscusCommentScriptAttributes = {
   repo: '',
   repoId: '',
   category: '',
@@ -17,17 +17,16 @@ const DEFAULT_GISCUS_ATTRIBUTES: GiscusAttributes = {
   inputPosition: 'bottom',
   theme: 'light',
   lang: 'en',
-  crossOrigin: '',
-  async: true,
 };
-const options: GiscusAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
+const options: GiscusCommentScriptAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
 
 export default defineComponent({
   props: {
     reactionsEnabled: {type: Boolean, default: options.reactionsEnabled},
     theme: {type: String, default: options.theme},
     inputPosition: {type: String, default: options.inputPosition},
-    lang: {type: String, default: options.lang}
+    lang: {type: String, default: options.lang},
+    term: {type: String, default: options.term + '', required: ['specific', 'number'].includes(options.mapping)},
   },
   data() {
     return {
@@ -36,20 +35,30 @@ export default defineComponent({
   },
   methods: {
     getScriptElement() {
-      const element = document.createElement("script");
-      element.setAttribute("src", "https://giscus.app/client.js");
-      element.setAttribute("data-repo", options.repo);
-      element.setAttribute("data-repo-id", options.repoId);
-      element.setAttribute("data-category", options.category);
-      element.setAttribute("data-category-id", options.categoryId);
-      element.setAttribute("data-mapping", options.mapping);
-      element.setAttribute("data-reactions-enabled", this.reactionsEnabled ? "1" : "0");
-      element.setAttribute("data-emit-metadata", options.emitMetadata ? "1" : "0");
-      element.setAttribute("data-input-position", this.inputPosition);
-      element.setAttribute("data-theme", this.theme);
-      element.setAttribute("data-lang", this.lang);
-      element.setAttribute("crossorigin", options.crossOrigin);
-      element.setAttribute("async", "true");
+      const element = document.createElement('script');
+      element.setAttribute('src', 'https://giscus.app/client.js');
+      element.setAttribute('data-repo', options.repo);
+      element.setAttribute('data-repo-id', options.repoId);
+      element.setAttribute('data-mapping', options.mapping);
+      switch (options.mapping) {
+        case 'specific': //'specific' mapping does not require a category value
+          element.setAttribute('data-term', this.term);
+          break;
+        case 'number':
+          element.setAttribute('data-term', this.term);
+          // noinspection FallThroughInSwitchStatementJS
+        default:
+          element.setAttribute('data-category', options.category);
+          element.setAttribute('data-category-id', options.categoryId);
+          break;
+      }
+      element.setAttribute('data-reactions-enabled', this.reactionsEnabled ? '1' : '0');
+      element.setAttribute('data-emit-metadata', options.emitMetadata ? '1' : '0');
+      element.setAttribute('data-input-position', this.inputPosition);
+      element.setAttribute('data-theme', this.theme);
+      element.setAttribute('data-lang', this.lang);
+      element.setAttribute('crossorigin', 'anonymous');
+      element.toggleAttribute('async');
       return element;
     },
   },
