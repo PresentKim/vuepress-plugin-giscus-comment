@@ -17,7 +17,7 @@ const DEFAULT_GISCUS_ATTRIBUTES: GiscusCommentScriptAttributes = {
   inputPosition: 'bottom',
   theme: 'light',
   lang: 'en',
-  lazyLoding: true,
+  lazyLoading: true,
 };
 const options: GiscusCommentScriptAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
 
