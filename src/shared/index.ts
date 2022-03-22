@@ -43,18 +43,3 @@ export interface GiscusAttributes extends RequiredOptions, OptionalOptions {
     mapping: MappingType
     term?: string | number
 }
-
-export const DEFAULT_GISCUS_ATTRIBUTES: GiscusAttributes = {
-    repo: '',
-    repoId: '',
-    category: '',
-    categoryId: '',
-    mapping: 'pathname',
-    reactionsEnabled: true,
-    emitMetadata: false,
-    inputPosition: 'bottom',
-    theme: 'light',
-    lang: 'en',
-    crossOrigin: '',
-    async: true,
-}

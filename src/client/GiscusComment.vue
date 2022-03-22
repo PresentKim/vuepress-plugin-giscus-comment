@@ -2,10 +2,24 @@
   <div class="giscus"/>
 </template>
 <script lang="ts">
-import {DEFAULT_GISCUS_ATTRIBUTES, GiscusAttributes, GiscusCommentPluginOptions} from "../shared";
+import {GiscusAttributes, GiscusCommentPluginOptions} from "../shared";
 import {defineComponent} from "vue";
 
 declare const __GISCUS_COMMENT_OPTIONS__: GiscusCommentPluginOptions;
+const DEFAULT_GISCUS_ATTRIBUTES: GiscusAttributes = {
+  repo: '',
+  repoId: '',
+  category: '',
+  categoryId: '',
+  mapping: 'pathname',
+  reactionsEnabled: true,
+  emitMetadata: false,
+  inputPosition: 'bottom',
+  theme: 'light',
+  lang: 'en',
+  crossOrigin: '',
+  async: true,
+};
 const options: GiscusAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
 
 export default defineComponent({
