@@ -1,14 +1,4 @@
 {
-  "compilerOptions": {
-    "lib": ["dom", "es2020"],
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "target": "ES2018",
-    "rootDir": "./src",
-    "outDir": "./lib",
-    "sourceMap": true,
-    "strict": true,
-    "declaration": true,
-    "strictNullChecks": true
-  }
+  "extends": "./tsconfig.base.json",
+  "include": ["./src"]
 }

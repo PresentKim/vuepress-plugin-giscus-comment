@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf lib *.tsbuildinfo",
     "copy": "cpx \"src/**/*.vue\" lib",
-    "build": "yarn clean && tsc && yarn copy"
+    "build": "yarn clean && tsc -b tsconfig.build.json && yarn copy"
   },
   "devDependencies": {
     "@babel/types": "^7.17.0",
