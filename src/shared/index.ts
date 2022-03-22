@@ -53,6 +53,12 @@ interface OptionalOptions {
     lang:
         'de' | 'en' | 'es' | 'fr' | 'gsw' | 'id' | 'it' | 'ja' |
         'ko' | 'pl' | 'ro' | 'ru' | 'tr' | 'vi' | 'zh-CN' | 'zh-TW';
+
+    /**
+     * @description Whether to load the comments lazily
+     * @default true
+     */
+    lazyLoading: boolean;
 }
 
 interface CategoryOptions {

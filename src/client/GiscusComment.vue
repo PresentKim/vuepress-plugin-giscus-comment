@@ -17,6 +17,7 @@ const DEFAULT_GISCUS_ATTRIBUTES: GiscusCommentScriptAttributes = {
   inputPosition: 'bottom',
   theme: 'light',
   lang: 'en',
+  lazyLoding: true,
 };
 const options: GiscusCommentScriptAttributes = Object.assign(DEFAULT_GISCUS_ATTRIBUTES, __GISCUS_COMMENT_OPTIONS__);
 
@@ -57,6 +58,9 @@ export default defineComponent({
       element.setAttribute('data-input-position', this.inputPosition);
       element.setAttribute('data-theme', this.theme);
       element.setAttribute('data-lang', this.lang);
+      if (options.lazyLoading) {
+        element.setAttribute('data-loading', 'lazy');
+      }
       element.setAttribute('crossorigin', 'anonymous');
       element.toggleAttribute('async');
       return element;
