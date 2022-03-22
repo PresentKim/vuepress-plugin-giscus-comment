@@ -1,9 +1,12 @@
 .idea/
 node_modules/
 .github/
+src/
 
 .DS_Store
 yarn-error.log
 .gitignore
 .npmignore
 tsconfig.json
+tsconfig.*.json
+*.tsbuildinfo
