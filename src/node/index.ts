@@ -24,3 +24,5 @@ const plugin: Plugin<GiscusCommentPluginOptions> = (options, app) => {
     return new GiscusCommentPlugin(options);
 };
 export default plugin;
+
+export * from '../shared';
